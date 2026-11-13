@@ -1,0 +1,1343 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>라이뷰티 | 프리미엄 속눈썹 &amp; 두피 케어 살롱</title>
+    <meta name="description" content="1:1 맞춤 디자인 속눈썹 연장·펌 &amp; 두피 케어 전문 살롱 라이뷰티. 자연스러움 속에서 피어나는 본연의 또렷함." />
+    <meta property="og:title" content="라이뷰티 | 프리미엄 속눈썹 &amp; 두피 케어 살롱" />
+    <meta property="og:description" content="1:1 맞춤 디자인 속눈썹 연장·펌 &amp; 두피 케어 전문 살롱 라이뷰티" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Google Web Fonts: Noto Serif KR & Pretendard -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body class="bg-white text-[#09090B] antialiased selection:bg-[#FFE600] selection:text-black">
+
+    <!-- [1. HEADER] 고정형 헤더 (블랙&화이트 + 옐로우 포인트) -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 glass-nav border-b border-zinc-200 transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+        
+        <!-- 로고 (한국어 '라이뷰티'만 표기 + 노랑 스파클 포인트) -->
+        <a href="#hero" class="flex items-center gap-2.5 group focus:outline-none">
+          <div class="w-10 h-10 rounded-full bg-black text-[#FFE600] flex items-center justify-center transition-transform group-hover:scale-105 shadow-sm border border-zinc-800">
+            <i data-lucide="sparkles" class="w-5 h-5 fill-current"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-2xl font-bold tracking-tight text-black font-serif-kr group-hover:text-zinc-700 transition-colors">
+              라이뷰티
+            </span>
+            <span class="text-[10px] tracking-widest text-zinc-500 font-semibold -mt-1">
+              프리미엄 맞춤 살롱
+            </span>
+          </div>
+        </a>
+
+        <!-- 데스크톱 메뉴 네비게이션 -->
+        <nav class="hidden lg:flex items-center gap-8 text-[15px] font-semibold text-zinc-600">
+          <a href="#hero" class="flex items-center gap-1.5 hover:text-black transition-colors py-1">
+            <i data-lucide="house" class="w-4 h-4 text-zinc-400"></i>
+            <span>홈</span>
+          </a>
+          <a href="#about" class="hover:text-black transition-colors py-1">소개</a>
+          <a href="#diagnosis" class="flex items-center gap-1.5 hover:text-black transition-colors py-1 text-black font-bold">
+            <span class="w-2 h-2 rounded-full bg-[#FFE600] inline-block animate-pulse"></span>
+            <span>1:1 맞춤 진단</span>
+          </a>
+          <a href="#service" class="hover:text-black transition-colors py-1">시술 서비스</a>
+          <a href="#lookbook" class="flex items-center gap-1.5 hover:text-black transition-colors py-1">
+            <i data-lucide="images" class="w-4 h-4 text-zinc-400"></i>
+            <span>룩북</span>
+          </a>
+          <a href="#review" class="hover:text-black transition-colors py-1">고객 후기</a>
+          <a href="#reservation" class="hover:text-black transition-colors py-1">예약/상담</a>
+        </nav>
+
+        <!-- 우측 액션 버튼들 -->
+        <div class="flex items-center gap-3">
+          <!-- 최근 본 시술 / 보관함 (ShoppingBag) -->
+          <button id="btn-recent-modal" title="최근 본 시술 목록" class="relative p-2.5 rounded-full hover:bg-zinc-100 text-zinc-800 transition-colors border border-transparent hover:border-zinc-200">
+            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+            <span id="recent-badge" class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#FFE600] text-black text-[10px] font-extrabold flex items-center justify-center hidden border border-black">0</span>
+          </button>
+
+          <!-- 1:1 상담 연결 (UserRound) -->
+          <a href="#reservation" title="상담 및 안내" class="hidden sm:flex p-2.5 rounded-full hover:bg-zinc-100 text-zinc-800 transition-colors">
+            <i data-lucide="user-round" class="w-5 h-5"></i>
+          </a>
+
+          <!-- 메인 예약하기 CTA (블랙 & 옐로우 악센트) -->
+          <button id="btn-quick-reserve" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black text-white text-sm font-bold hover:bg-zinc-800 transition-all shadow-sm active:scale-95 group">
+            <i data-lucide="calendar-days" class="w-4 h-4 text-[#FFE600] group-hover:scale-110 transition-transform"></i>
+            <span>실시간 예약</span>
+          </button>
+
+          <!-- 모바일 메뉴 버튼 (Menu) -->
+          <button id="btn-mobile-toggle" aria-label="메뉴 열기" class="lg:hidden p-2.5 rounded-full hover:bg-zinc-100 text-black transition-colors">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 모바일 드로어 메뉴 -->
+      <div id="mobile-menu" class="lg:hidden hidden bg-white border-b border-zinc-200 px-6 py-6 transition-all duration-300">
+        <div class="flex flex-col gap-4 text-base font-semibold text-zinc-900">
+          <a href="#hero" class="mobile-nav-link flex items-center gap-3 py-2 border-b border-zinc-100">
+            <i data-lucide="house" class="w-5 h-5 text-zinc-400"></i>
+            <span>홈 (메인)</span>
+          </a>
+          <a href="#about" class="mobile-nav-link flex items-center gap-3 py-2 border-b border-zinc-100">
+            <i data-lucide="heart" class="w-5 h-5 text-zinc-400"></i>
+            <span>라이뷰티 소개</span>
+          </a>
+          <a href="#diagnosis" class="mobile-nav-link flex items-center gap-3 py-2 border-b border-zinc-100 text-black font-bold">
+            <i data-lucide="sparkles" class="w-5 h-5 text-[#FFE600] fill-current"></i>
+            <span>1:1 퍼스널 아이래쉬 진단</span>
+          </a>
+          <a href="#service" class="mobile-nav-link flex items-center gap-3 py-2 border-b border-zinc-100">
+            <i data-lucide="scissors" class="w-5 h-5 text-zinc-400"></i>
+            <span>시술 서비스 메뉴</span>
+          </a>
+          <a href="#lookbook" class="mobile-nav-link flex items-center gap-3 py-2 border-b border-zinc-100">
+            <i data-lucide="images" class="w-5 h-5 text-zinc-400"></i>
+            <span>스타일 룩북</span>
+          </a>
+          <a href="#review" class="mobile-nav-link flex items-center gap-3 py-2 border-b border-zinc-100">
+            <i data-lucide="star" class="w-5 h-5 text-zinc-400"></i>
+            <span>고객 생생 후기</span>
+          </a>
+          <a href="#reservation" class="mobile-nav-link flex items-center gap-3 py-2 border-b border-zinc-100">
+            <i data-lucide="calendar-days" class="w-5 h-5 text-zinc-400"></i>
+            <span>예약 및 매장 위치</span>
+          </a>
+        </div>
+        <div class="mt-5 pt-3 flex gap-3">
+          <button id="btn-mobile-reserve" class="flex-1 py-3.5 rounded-xl bg-black text-[#FFE600] font-bold text-center text-sm shadow">
+            온라인 즉시 예약
+          </button>
+          <a href="tel:0507-1361-4297" class="px-4 py-3.5 rounded-xl border border-zinc-300 text-black flex items-center justify-center" title="원장 직통 전화">
+            <i data-lucide="phone" class="w-5 h-5"></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="pt-20 overflow-hidden">
+
+      <!-- [2. HERO SECTION] 메인 뷰티 비주얼 (블랙 & 화이트 + 옐로우 악센트) -->
+      <section id="hero" class="relative min-h-[92vh] flex items-center justify-center px-5 sm:px-8 py-20 bg-white">
+        <!-- 배경 기하학적 앰비언트 -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+          <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-zinc-100 rounded-full blur-3xl opacity-70"></div>
+          <div class="absolute bottom-10 right-10 w-[350px] h-[350px] bg-[#FEFCE8] rounded-full blur-3xl opacity-60"></div>
+        </div>
+
+        <div class="relative max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center min-h-[520px]">
+          <!-- 텍스트 영역 (6 cols) - 세로 중앙 정렬 (justify-center my-auto) -->
+          <div class="lg:col-span-6 flex flex-col justify-center items-start z-10 hero-text-box my-auto h-full py-4">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 border border-zinc-300 text-zinc-900 text-xs font-bold mb-5 tracking-wide">
+              <span class="w-2 h-2 rounded-full bg-[#FFE600] inline-block"></span>
+              <span>10대 후반 &amp; 학생 맞춤 자연미 특화 살롱</span>
+            </div>
+
+            <!-- 오직 한국어 브랜드명 '라이뷰티' + 글자 붙여 쓰기 및 적정 크기 조정 (text-lg sm:text-xl lg:text-2xl) -->
+            <h1 class="text-lg sm:text-xl lg:text-2xl font-black tracking-tight text-black font-serif-kr leading-snug mb-3">
+              자연스러움 속에서 피어나는 본연의 또렷함, 
+              <span class="relative inline-block text-black">
+                라이뷰티
+                <span class="absolute bottom-0.5 left-0 w-full h-2 bg-[#FFE600] -z-10 opacity-90 transform -rotate-1"></span>
+              </span>
+            </h1>
+
+            <p class="text-sm sm:text-base text-zinc-600 leading-relaxed mb-6 max-w-xl font-normal">
+              과하거나 인위적인 시술이 아닌, 내 원래 눈매에 꼭 맞춘 투명한 또렷함.<br class="hidden sm:inline" />
+              첫 시술도 눈시림과 이물감 없이 편안한 1:1 맞춤형 래쉬 &amp; 두피 살롱입니다.
+            </p>
+
+            <!-- 히어로 CTA 버튼들 -->
+            <div class="flex flex-wrap items-center gap-4 w-full sm:w-auto">
+              <a href="#diagnosis" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full bg-black text-[#FFE600] font-bold text-sm hover:bg-zinc-800 transition-all shadow-lg active:scale-95 group border border-black">
+                <i data-lucide="sparkles" class="w-4 h-4 fill-current"></i>
+                <span>1:1 맞춤 진단 시작</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1 text-white"></i>
+              </a>
+
+              <a href="#lookbook" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-white border-2 border-black text-black font-bold text-sm hover:bg-zinc-100 transition-all shadow-sm">
+                <i data-lucide="images" class="w-4 h-4 text-zinc-700"></i>
+                <span>시술 룩북 보기</span>
+              </a>
+            </div>
+
+            <!-- 핵심 신뢰 지표 3가지 (블랙 텍스트 & 노랑 포인트) -->
+            <div class="mt-12 pt-8 border-t border-zinc-200 grid grid-cols-3 gap-6 w-full max-w-lg">
+              <div>
+                <p class="text-2xl font-black text-black font-serif-kr">100%</p>
+                <p class="text-xs text-zinc-500 font-medium mt-0.5">1:1 단독 프라이빗 시술</p>
+              </div>
+              <div>
+                <p class="text-2xl font-black text-black font-serif-kr">KC인증</p>
+                <p class="text-xs text-zinc-500 font-medium mt-0.5">저자극 무자극 정품 글루</p>
+              </div>
+              <div>
+                <p class="text-2xl font-black text-black font-serif-kr flex items-center gap-1">
+                  4.98<span class="text-[#FFE600]">★</span>
+                </p>
+                <p class="text-xs text-zinc-500 font-medium mt-0.5">10대·20대 만족 후기</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 메인 뷰티 이미지 영역 (6 cols) -->
+          <div class="lg:col-span-6 flex justify-center relative hero-visual-box">
+            <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-2 border-zinc-900 bg-black">
+              <img 
+                src="https://images.unsplash.com/photo-1583001809873-a128495da465?auto=format&fit=crop&w=1000&q=80" 
+                alt="라이뷰티 내추럴 속눈썹 시술" 
+                class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              <!-- 이미지 위 플로팅 인포 카드 (블랙 & 옐로우 테마) -->
+              <div class="absolute bottom-5 left-5 right-5 p-4 rounded-2xl glass-dark-card text-left">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="inline-flex items-center gap-1.5 text-xs font-bold text-[#FFE600]">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 fill-current"></i>
+                    이달의 시그니처
+                  </span>
+                  <span class="text-[11px] text-zinc-400">유지력 4~6주</span>
+                </div>
+                <h2 class="text-base font-bold text-white font-serif-kr">네츄럴 영양 틴팅 래쉬펌</h2>
+                <p class="text-xs text-zinc-300 mt-1 line-clamp-1">티 나지 않게 아침 뷰러 시간을 없애주는 학생 베스트 시술</p>
+              </div>
+            </div>
+
+            <!-- 장식용 미니 카드 -->
+            <div class="absolute -top-4 -right-4 hidden sm:flex items-center gap-3 p-3.5 rounded-2xl bg-white shadow-xl border border-zinc-200">
+              <div class="w-9 h-9 rounded-full bg-black text-[#FFE600] flex items-center justify-center">
+                <i data-lucide="heart" class="w-5 h-5 fill-current"></i>
+              </div>
+              <div class="text-left">
+                <p class="text-xs font-bold text-black">눈시림 제로 원칙</p>
+                <p class="text-[10px] text-zinc-500">모근 보호 테크닉</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- [3. ABOUT SECTION] 라이뷰티 철학 및 소개 (블랙 & 화이트) -->
+      <section id="about" class="py-24 px-5 sm:px-8 bg-zinc-50 border-y border-zinc-200">
+        <div class="max-w-6xl mx-auto">
+          
+          <div class="text-center max-w-2xl mx-auto mb-16 about-header">
+            <span class="inline-block px-3 py-1 rounded-full bg-black text-[#FFE600] text-[11px] font-bold tracking-widest uppercase mb-3">ABOUT RAI BEAUTY</span>
+            <h2 class="text-lg sm:text-xl lg:text-2xl font-bold text-black font-serif-kr tracking-tight mt-1 mb-3">
+              과하지 않은 은은한 결, 라이뷰티가 지키는 4가지 약속
+            </h2>
+            <p class="text-sm sm:text-base text-zinc-600 leading-relaxed">
+              10대 후반 고객님들의 여린 눈가 피부와 자연스러운 학업 일상을 배려하여,<br class="hidden sm:inline" />
+              모근 손상 없이 건강하고 맑은 눈매를 디자인합니다.
+            </p>
+          </div>
+
+          <!-- 4대 가치 카드 그리드 -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 about-cards">
+            
+            <div class="p-6 rounded-2xl bg-white border border-zinc-200 hover:border-black transition-all hover:-translate-y-1 hover:shadow-lg group">
+              <div class="w-12 h-12 rounded-xl bg-black text-[#FFE600] flex items-center justify-center mb-5 shadow-sm group-hover:scale-105 transition-transform">
+                <i data-lucide="sparkles" class="w-6 h-6 fill-current"></i>
+              </div>
+              <h3 class="text-lg font-bold text-black font-serif-kr mb-2">1:1 퍼스널 계측</h3>
+              <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+                공장형 시술이 아닙니다. 고객 한 분 한 분의 쌍꺼풀 깊이, 모의 굵기, 각도를 정밀 분석해 맞춤 컬링을 처방합니다.
+              </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-white border border-zinc-200 hover:border-black transition-all hover:-translate-y-1 hover:shadow-lg group">
+              <div class="w-12 h-12 rounded-xl bg-black text-[#FFE600] flex items-center justify-center mb-5 shadow-sm group-hover:scale-105 transition-transform">
+                <i data-lucide="heart" class="w-6 h-6 fill-current"></i>
+              </div>
+              <h3 class="text-lg font-bold text-black font-serif-kr mb-2">모근 보호 &amp; 무자극</h3>
+              <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+                뿌리 1mm 안전 간격을 준수하고 비건 펌제 및 KC 인증 저자극 글루만을 사용하여 눈시림과 당김이 전혀 없습니다.
+              </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-white border border-zinc-200 hover:border-black transition-all hover:-translate-y-1 hover:shadow-lg group">
+              <div class="w-12 h-12 rounded-xl bg-black text-[#FFE600] flex items-center justify-center mb-5 shadow-sm group-hover:scale-105 transition-transform">
+                <i data-lucide="scissors" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-lg font-bold text-black font-serif-kr mb-2">토탈 뷰티 클리닉</h3>
+              <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+                속눈썹뿐만 아니라 스트레스성 지루성 두피와 손상모를 케어하는 전문 앰플 클리닉을 프라이빗 룸에서 동시에 운영합니다.
+              </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-white border border-zinc-200 hover:border-black transition-all hover:-translate-y-1 hover:shadow-lg group">
+              <div class="w-12 h-12 rounded-xl bg-black text-[#FFE600] flex items-center justify-center mb-5 shadow-sm group-hover:scale-105 transition-transform">
+                <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+              </div>
+              <h3 class="text-lg font-bold text-black font-serif-kr mb-2">투명 정찰제 원칙</h3>
+              <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+                기장 추가금이나 불필요한 옵션 강요 없이, 모든 시술 과정과 시간, 가격을 투명하게 안내하는 정직한 살롱입니다.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- 감성 샵 갤러리 프리뷰 스트립 (모노크롬 프레임) -->
+          <div class="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="aspect-[16/9] rounded-2xl overflow-hidden border border-zinc-300">
+              <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80" alt="라이뷰티 살롱 인테리어" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="aspect-[16/9] rounded-2xl overflow-hidden border border-zinc-300">
+              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="라이뷰티 시술 전경" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="aspect-[16/9] rounded-2xl overflow-hidden border border-zinc-300">
+              <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=800&q=80" alt="라이뷰티 힐링 공간" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- [4. 1:1 PERSONAL DIAGNOSIS] 인터랙티브 1:1 맞춤 진단 가이드 (블랙 & 옐로우) -->
+      <section id="diagnosis" class="py-24 px-5 sm:px-8 bg-white relative">
+        <div class="max-w-4xl mx-auto">
+          
+          <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black text-[#FFE600] text-xs font-bold mb-3">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 fill-current"></i>
+              <span>10대 후반 맞춤 자연스러움 솔루션</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-black font-serif-kr mb-3">
+              1:1 퍼스널 아이래쉬 진단 가이드
+            </h2>
+            <p class="text-sm sm:text-base text-zinc-600">
+              3가지 질문에 답변하시면 나만의 눈매에 가장 자연스럽고 예쁜 시술을 찾아드립니다.
+            </p>
+          </div>
+
+          <!-- 진단 인터랙티브 컨테이너 카드 -->
+          <div class="bg-zinc-50 rounded-3xl p-6 sm:p-10 shadow-xl border border-zinc-300">
+            
+            <form id="diagnosis-form" class="space-y-8">
+              <!-- 질문 1 -->
+              <div>
+                <label class="block text-sm sm:text-base font-bold text-black mb-3">
+                  Q1. 평소 원하시는 눈매 이미지는 무엇인가요?
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <label class="diagnosis-option border border-zinc-300 rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer hover:border-black transition-all bg-white">
+                    <input type="radio" name="goal" value="natural" class="sr-only" checked />
+                    <span class="w-3.5 h-3.5 rounded-full border-2 border-black mb-2 check-dot bg-[#FFE600]"></span>
+                    <span class="font-bold text-sm text-black">자연스러움 (내추럴)</span>
+                    <span class="text-[11px] text-zinc-500 mt-0.5">티 나지 않게 쌩얼도 또렷하게</span>
+                  </label>
+
+                  <label class="diagnosis-option border border-zinc-300 rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer hover:border-black transition-all bg-white">
+                    <input type="radio" name="goal" value="defined" class="sr-only" />
+                    <span class="w-3.5 h-3.5 rounded-full border-2 border-zinc-300 mb-2 check-dot"></span>
+                    <span class="font-bold text-sm text-black">깔끔하고 또렷함</span>
+                    <span class="text-[11px] text-zinc-500 mt-0.5">뷰러+마스카라 바른 느낌</span>
+                  </label>
+
+                  <label class="diagnosis-option border border-zinc-300 rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer hover:border-black transition-all bg-white">
+                    <input type="radio" name="goal" value="glam" class="sr-only" />
+                    <span class="w-3.5 h-3.5 rounded-full border-2 border-zinc-300 mb-2 check-dot"></span>
+                    <span class="font-bold text-sm text-black">풍성한 입체감</span>
+                    <span class="text-[11px] text-zinc-500 mt-0.5">눈매가 길어 보이고 또렷한 스타일</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 질문 2 -->
+              <div>
+                <label class="block text-sm sm:text-base font-bold text-black mb-3">
+                  Q2. 고객님의 쌍꺼풀 형태는 어떻게 되시나요?
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <label class="diagnosis-option border border-zinc-300 rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer hover:border-black transition-all bg-white">
+                    <input type="radio" name="eyelid" value="mono" class="sr-only" checked />
+                    <span class="w-3.5 h-3.5 rounded-full border-2 border-black mb-2 check-dot bg-[#FFE600]"></span>
+                    <span class="font-bold text-sm text-black">무쌍 (눈두덩 살 있음)</span>
+                    <span class="text-[11px] text-zinc-500 mt-0.5">살에 닿지 않는 완만한 C컬</span>
+                  </label>
+
+                  <label class="diagnosis-option border border-zinc-300 rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer hover:border-black transition-all bg-white">
+                    <input type="radio" name="eyelid" value="inner" class="sr-only" />
+                    <span class="w-3.5 h-3.5 rounded-full border-2 border-zinc-300 mb-2 check-dot"></span>
+                    <span class="font-bold text-sm text-black">속쌍꺼풀 / 얇은 쌍꺼풀</span>
+                    <span class="text-[11px] text-zinc-500 mt-0.5">시원하게 트여 보이는 JC컬</span>
+                  </label>
+
+                  <label class="diagnosis-option border border-zinc-300 rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer hover:border-black transition-all bg-white">
+                    <input type="radio" name="eyelid" value="outer" class="sr-only" />
+                    <span class="w-3.5 h-3.5 rounded-full border-2 border-zinc-300 mb-2 check-dot"></span>
+                    <span class="font-bold text-sm text-black">겉쌍꺼풀 / 진한 쌍꺼풀</span>
+                    <span class="text-[11px] text-zinc-500 mt-0.5">과하지 않게 정돈해주는 밸런스컬</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 질문 3 -->
+              <div>
+                <label class="block text-sm sm:text-base font-bold text-black mb-3">
+                  Q3. 가장 고민되는 부분은 무엇인가요?
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <label class="diagnosis-option border border-zinc-300 rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer hover:border-black transition-all bg-white">
+                    <input type="radio" name="worry" value="droop" class="sr-only" checked />
+                    <span class="w-3.5 h-3.5 rounded-full border-2 border-black mb-2 check-dot bg-[#FFE600]"></span>
+                    <span class="font-bold text-sm text-black">아래로 처지는 직모</span>
+                    <span class="text-[11px] text-zinc-500 mt-0.5">뷰러해도 금방 처져요</span>
+                  </label>
+
+                  <label class="diagnosis-option border border-zinc-300 rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer hover:border-black transition-all bg-white">
+                    <input type="radio" name="worry" value="damage" class="sr-only" />
+                    <span class="w-3.5 h-3.5 rounded-full border-2 border-zinc-300 mb-2 check-dot"></span>
+                    <span class="font-bold text-sm text-black">가늘고 약한 모질</span>
+                    <span class="text-[11px] text-zinc-500 mt-0.5">영양 보충이 필요해요</span>
+                  </label>
+
+                  <label class="diagnosis-option border border-zinc-300 rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer hover:border-black transition-all bg-white">
+                    <input type="radio" name="worry" value="short" class="sr-only" />
+                    <span class="w-3.5 h-3.5 rounded-full border-2 border-zinc-300 mb-2 check-dot"></span>
+                    <span class="font-bold text-sm text-black">짧고 숱이 부족함</span>
+                    <span class="text-[11px] text-zinc-500 mt-0.5">가볍게 연장하고 싶어요</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 실시간 맞춤 처방 결과 카드 (블랙 프레임 & 옐로우 버튼) -->
+              <div id="diagnosis-result" class="p-6 sm:p-7 rounded-2xl bg-black text-white border-2 border-[#FFE600] transition-all">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div>
+                    <span class="inline-block px-2.5 py-0.5 rounded-full bg-[#FFE600] text-black text-[11px] font-extrabold mb-1.5">
+                      라이뷰티 맞춤 추천
+                    </span>
+                    <h3 id="result-title" class="text-xl sm:text-2xl font-bold text-white font-serif-kr">
+                      네츄럴펌 (클래식 내추럴 래쉬펌)
+                    </h3>
+                    <p id="result-desc" class="text-xs sm:text-sm text-zinc-300 mt-1.5 max-w-xl">
+                      학교에서도 부담 없는 자연스러운 곡선. 뷰러로 찝은 듯 깨끗하게 올라가 눈이 1.5배 맑아 보입니다.
+                    </p>
+                  </div>
+
+                  <button type="button" id="btn-apply-diagnosis" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#FFE600] text-black text-sm font-bold hover:bg-[#F5DC00] transition-all shadow shrink-0 flex items-center justify-center gap-2">
+                    <i data-lucide="calendar-days" class="w-4 h-4 text-black"></i>
+                    <span>이 코스로 예약하기</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- [5. SERVICE SECTION] 시술 컬렉션 & 정찰제 메뉴 (블랙&화이트) -->
+      <section id="service" class="py-24 px-5 sm:px-8 bg-zinc-50 border-t border-zinc-200">
+        <div class="max-w-7xl mx-auto">
+          
+          <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="inline-block px-3 py-1 rounded-full bg-black text-[#FFE600] text-[11px] font-bold tracking-widest uppercase mb-3">SERVICE MENU</span>
+            <h2 class="text-3xl sm:text-4xl font-bold text-black font-serif-kr mt-1 mb-3">
+              라이뷰티 시술 컬렉션
+            </h2>
+            <p class="text-sm sm:text-base text-zinc-600">
+              속눈썹 펌 &amp; 연장부터 두피 클리닉까지 정찰제 가격과 소요 시간을 확인하세요.
+            </p>
+            <div class="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-zinc-700">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-zinc-200 shadow-2xs">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-black stroke-[3]"></i> 100% 투명 정찰제 가격
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-zinc-200 shadow-2xs">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-black"></i> 기준 소요 시간 정직 안내
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-zinc-200 shadow-2xs">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-black"></i> 대표원장 유시연 1:1 맞춤 시술
+              </span>
+            </div>
+          </div>
+
+          <!-- 카테고리 3개 그룹 -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- 그룹 1: 속눈썹 펌 라인 -->
+            <div class="bg-white p-6 sm:p-7 rounded-3xl border border-zinc-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between pb-4 border-b border-zinc-200 mb-6">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-8 h-8 rounded-full bg-black text-[#FFE600] flex items-center justify-center text-xs font-black">01</span>
+                    <div>
+                      <h3 class="text-xl font-bold text-black font-serif-kr">속눈썹 펌</h3>
+                      <p class="text-[11px] text-zinc-400 font-medium">Lash Lift Collection</p>
+                    </div>
+                  </div>
+                  <span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 text-zinc-800 font-bold border border-zinc-200">비건 영양 펌제</span>
+                </div>
+
+                <div class="space-y-4">
+                  <!-- 시술 1: 네츄럴펌 -->
+                  <div class="service-item group p-3.5 sm:p-4 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-black hover:shadow-md transition-all duration-300">
+                    <div class="flex gap-3.5 items-center">
+                      <div class="relative w-20 h-20 sm:w-22 sm:h-22 rounded-xl overflow-hidden shrink-0 bg-zinc-200 border border-zinc-200">
+                        <img src="/src/assets/natural-perm.png" alt="네츄럴펌 시술 사진" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" />
+                        <span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/85 text-[10px] text-[#FFE600] font-bold">45분</span>
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between gap-1 mb-1">
+                          <div class="flex items-center gap-1.5 flex-wrap">
+                            <h4 class="font-bold text-sm sm:text-base text-black group-hover:text-zinc-900">네츄럴펌</h4>
+                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#FFE600] text-black">인기 1위</span>
+                          </div>
+                          <span class="font-black text-sm sm:text-base text-black tracking-tight whitespace-nowrap">35,000원</span>
+                        </div>
+                        <p class="text-xs text-zinc-600 line-clamp-1 leading-snug">티 안 나게 맑아지는 학생 인기 1위 C컬 뷰러펌</p>
+                        <div class="mt-2.5 pt-2 border-t border-zinc-200 flex items-center justify-between text-[11px]">
+                          <span class="text-zinc-500 font-medium flex items-center gap-1">
+                            <i data-lucide="clock" class="w-3 h-3 text-zinc-400"></i>
+                            <span>소요 <strong class="text-black font-semibold">45분</strong></span>
+                          </span>
+                          <button data-service="네츄럴펌" class="btn-select-service inline-flex items-center gap-1 font-bold text-black hover:text-[#B29200] group-hover:translate-x-0.5 transition-all">
+                            <span>선택하기</span>
+                            <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 시술 2: 영양클리닉펌 -->
+                  <div class="service-item group p-3.5 sm:p-4 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-black hover:shadow-md transition-all duration-300">
+                    <div class="flex gap-3.5 items-center">
+                      <div class="relative w-20 h-20 sm:w-22 sm:h-22 rounded-xl overflow-hidden shrink-0 bg-zinc-200 border border-zinc-200">
+                        <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=600&q=80" alt="영양클리닉펌 시술 사진" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" />
+                        <span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/85 text-[10px] text-[#FFE600] font-bold">50분</span>
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between gap-1 mb-1">
+                          <div class="flex items-center gap-1.5 flex-wrap">
+                            <h4 class="font-bold text-sm sm:text-base text-black group-hover:text-zinc-900">영양클리닉펌</h4>
+                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#FFE600] text-black">원장 추천</span>
+                          </div>
+                          <span class="font-black text-sm sm:text-base text-black tracking-tight whitespace-nowrap">45,000원</span>
+                        </div>
+                        <p class="text-xs text-zinc-600 line-clamp-1 leading-snug">고농축 케라틴 단백질 앰플 공급으로 윤기와 탄력 유지</p>
+                        <div class="mt-2.5 pt-2 border-t border-zinc-200 flex items-center justify-between text-[11px]">
+                          <span class="text-zinc-500 font-medium flex items-center gap-1">
+                            <i data-lucide="clock" class="w-3 h-3 text-zinc-400"></i>
+                            <span>소요 <strong class="text-black font-semibold">50분</strong></span>
+                          </span>
+                          <button data-service="영양클리닉펌" class="btn-select-service inline-flex items-center gap-1 font-bold text-black hover:text-[#B29200] group-hover:translate-x-0.5 transition-all">
+                            <span>선택하기</span>
+                            <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 시술 3: 블랙클리닉펌 -->
+                  <div class="service-item group p-3.5 sm:p-4 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-black hover:shadow-md transition-all duration-300">
+                    <div class="flex gap-3.5 items-center">
+                      <div class="relative w-20 h-20 sm:w-22 sm:h-22 rounded-xl overflow-hidden shrink-0 bg-zinc-200 border border-zinc-200">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="블랙클리닉펌 시술 사진" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" />
+                        <span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/85 text-[10px] text-[#FFE600] font-bold">55분</span>
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between gap-1 mb-1">
+                          <div class="flex items-center gap-1.5 flex-wrap">
+                            <h4 class="font-bold text-sm sm:text-base text-black group-hover:text-zinc-900">블랙클리닉펌</h4>
+                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-black text-[#FFE600]">틴팅 코팅</span>
+                          </div>
+                          <span class="font-black text-sm sm:text-base text-black tracking-tight whitespace-nowrap">50,000원</span>
+                        </div>
+                        <p class="text-xs text-zinc-600 line-clamp-1 leading-snug">블랙 코팅 틴팅으로 마스카라를 바른 듯 짙고 또렷한 래쉬</p>
+                        <div class="mt-2.5 pt-2 border-t border-zinc-200 flex items-center justify-between text-[11px]">
+                          <span class="text-zinc-500 font-medium flex items-center gap-1">
+                            <i data-lucide="clock" class="w-3 h-3 text-zinc-400"></i>
+                            <span>소요 <strong class="text-black font-semibold">55분</strong></span>
+                          </span>
+                          <button data-service="블랙클리닉펌" class="btn-select-service inline-flex items-center gap-1 font-bold text-black hover:text-[#B29200] group-hover:translate-x-0.5 transition-all">
+                            <span>선택하기</span>
+                            <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 하단 안내 박스 -->
+              <div class="mt-6 p-3.5 rounded-xl bg-zinc-100 text-[11px] text-zinc-700 border-l-4 border-[#FFE600] flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-4 h-4 text-black shrink-0"></i>
+                <span>모든 펌 시술 시 비건 콜라겐 아이패치 무료 부착 서비스</span>
+              </div>
+            </div>
+
+            <!-- 그룹 2: 속눈썹 연장 라인 -->
+            <div class="bg-white p-6 sm:p-7 rounded-3xl border border-zinc-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between pb-4 border-b border-zinc-200 mb-6">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-8 h-8 rounded-full bg-black text-[#FFE600] flex items-center justify-center text-xs font-black">02</span>
+                    <div>
+                      <h3 class="text-xl font-bold text-black font-serif-kr">속눈썹 연장</h3>
+                      <p class="text-[11px] text-zinc-400 font-medium">Lash Extension Collection</p>
+                    </div>
+                  </div>
+                  <span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 text-zinc-800 font-bold border border-zinc-200">초경량 플랫모</span>
+                </div>
+
+                <div class="space-y-4">
+                  <!-- 시술 4: 네츄럴 연장 -->
+                  <div class="service-item group p-3.5 sm:p-4 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-black hover:shadow-md transition-all duration-300">
+                    <div class="flex gap-3.5 items-center">
+                      <div class="relative w-20 h-20 sm:w-22 sm:h-22 rounded-xl overflow-hidden shrink-0 bg-zinc-200 border border-zinc-200">
+                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80" alt="네츄럴 연장 시술 사진" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" />
+                        <span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/85 text-[10px] text-[#FFE600] font-bold">60분</span>
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between gap-1 mb-1">
+                          <div class="flex items-center gap-1.5 flex-wrap">
+                            <h4 class="font-bold text-sm sm:text-base text-black group-hover:text-zinc-900">네츄럴 연장</h4>
+                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-black text-[#FFE600]">초경량</span>
+                          </div>
+                          <span class="font-black text-sm sm:text-base text-black tracking-tight whitespace-nowrap">55,000원</span>
+                        </div>
+                        <p class="text-xs text-zinc-600 line-clamp-1 leading-snug">내 속눈썹과 1:1 결합으로 무게감 없이 깃털처럼 가벼움</p>
+                        <div class="mt-2.5 pt-2 border-t border-zinc-200 flex items-center justify-between text-[11px]">
+                          <span class="text-zinc-500 font-medium flex items-center gap-1">
+                            <i data-lucide="clock" class="w-3 h-3 text-zinc-400"></i>
+                            <span>소요 <strong class="text-black font-semibold">60분</strong></span>
+                          </span>
+                          <button data-service="네츄럴 연장" class="btn-select-service inline-flex items-center gap-1 font-bold text-black hover:text-[#B29200] group-hover:translate-x-0.5 transition-all">
+                            <span>선택하기</span>
+                            <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 시술 5: 디자인 연장 -->
+                  <div class="service-item group p-3.5 sm:p-4 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-black hover:shadow-md transition-all duration-300">
+                    <div class="flex gap-3.5 items-center">
+                      <div class="relative w-20 h-20 sm:w-22 sm:h-22 rounded-xl overflow-hidden shrink-0 bg-zinc-200 border border-zinc-200">
+                        <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=600&q=80" alt="디자인 연장 시술 사진" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" />
+                        <span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/85 text-[10px] text-[#FFE600] font-bold">75분</span>
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between gap-1 mb-1">
+                          <div class="flex items-center gap-1.5 flex-wrap">
+                            <h4 class="font-bold text-sm sm:text-base text-black group-hover:text-zinc-900">디자인 연장</h4>
+                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#FFE600] text-black">커스텀</span>
+                          </div>
+                          <span class="font-black text-sm sm:text-base text-black tracking-tight whitespace-nowrap">70,000원</span>
+                        </div>
+                        <p class="text-xs text-zinc-600 line-clamp-1 leading-snug">아이돌 포인트 가닥 래쉬 or 꼬막눈 뒤트임 맞춤 디자인</p>
+                        <div class="mt-2.5 pt-2 border-t border-zinc-200 flex items-center justify-between text-[11px]">
+                          <span class="text-zinc-500 font-medium flex items-center gap-1">
+                            <i data-lucide="clock" class="w-3 h-3 text-zinc-400"></i>
+                            <span>소요 <strong class="text-black font-semibold">75분</strong></span>
+                          </span>
+                          <button data-service="디자인 연장" class="btn-select-service inline-flex items-center gap-1 font-bold text-black hover:text-[#B29200] group-hover:translate-x-0.5 transition-all">
+                            <span>선택하기</span>
+                            <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 연장 특화 안내 박스 -->
+              <div class="mt-6 p-3.5 rounded-xl bg-zinc-100 text-[11px] text-zinc-700 border-l-4 border-[#FFE600] flex items-center gap-2">
+                <i data-lucide="shield-check" class="w-4 h-4 text-black shrink-0"></i>
+                <span>모근 보호 원칙: 뿌리에서 1mm 띄워 시술하여 자연모 탈락 방지</span>
+              </div>
+            </div>
+
+            <!-- 그룹 3: 헤어 & 두피 케어 라인 -->
+            <div class="bg-white p-6 sm:p-7 rounded-3xl border border-zinc-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between pb-4 border-b border-zinc-200 mb-6">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-8 h-8 rounded-full bg-black text-[#FFE600] flex items-center justify-center text-xs font-black">03</span>
+                    <div>
+                      <h3 class="text-xl font-bold text-black font-serif-kr">헤어 &amp; 두피 케어</h3>
+                      <p class="text-[11px] text-zinc-400 font-medium">Hair &amp; Scalp Spa</p>
+                    </div>
+                  </div>
+                  <span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 text-zinc-800 font-bold border border-zinc-200">스파 클리닉</span>
+                </div>
+
+                <div class="space-y-4">
+                  <!-- 시술 6: 새치염색 -->
+                  <div class="service-item group p-3.5 sm:p-4 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-black hover:shadow-md transition-all duration-300">
+                    <div class="flex gap-3.5 items-center">
+                      <div class="relative w-20 h-20 sm:w-22 sm:h-22 rounded-xl overflow-hidden shrink-0 bg-zinc-200 border border-zinc-200">
+                        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=600&q=80" alt="새치염색 시술 사진" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" />
+                        <span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/85 text-[10px] text-[#FFE600] font-bold">50분</span>
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between gap-1 mb-1">
+                          <div class="flex items-center gap-1.5 flex-wrap">
+                            <h4 class="font-bold text-sm sm:text-base text-black group-hover:text-zinc-900">새치염색</h4>
+                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-zinc-800 text-white">저자극</span>
+                          </div>
+                          <span class="font-black text-sm sm:text-base text-black tracking-tight whitespace-nowrap">40,000원~</span>
+                        </div>
+                        <p class="text-xs text-zinc-600 line-clamp-1 leading-snug">두피 자극 없는 식물성 저자극 염모제로 자연스러운 커버</p>
+                        <div class="mt-2.5 pt-2 border-t border-zinc-200 flex items-center justify-between text-[11px]">
+                          <span class="text-zinc-500 font-medium flex items-center gap-1">
+                            <i data-lucide="clock" class="w-3 h-3 text-zinc-400"></i>
+                            <span>소요 <strong class="text-black font-semibold">50분</strong></span>
+                          </span>
+                          <button data-service="새치염색" class="btn-select-service inline-flex items-center gap-1 font-bold text-black hover:text-[#B29200] group-hover:translate-x-0.5 transition-all">
+                            <span>선택하기</span>
+                            <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 시술 7: 앰플영양클리닉케어 -->
+                  <div class="service-item group p-3.5 sm:p-4 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-black hover:shadow-md transition-all duration-300">
+                    <div class="flex gap-3.5 items-center">
+                      <div class="relative w-20 h-20 sm:w-22 sm:h-22 rounded-xl overflow-hidden shrink-0 bg-zinc-200 border border-zinc-200">
+                        <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=80" alt="앰플영양클리닉케어 시술 사진" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" />
+                        <span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/85 text-[10px] text-[#FFE600] font-bold">60분</span>
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between gap-1 mb-1">
+                          <div class="flex items-center gap-1.5 flex-wrap">
+                            <h4 class="font-bold text-sm sm:text-base text-black group-hover:text-zinc-900">앰플영양클리닉케어</h4>
+                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#FFE600] text-black">영양집중</span>
+                          </div>
+                          <span class="font-black text-sm sm:text-base text-black tracking-tight whitespace-nowrap">60,000원</span>
+                        </div>
+                        <p class="text-xs text-zinc-600 line-clamp-1 leading-snug">손상된 모발 코어에 나노 단백질 앰플과 스팀 수분 침투</p>
+                        <div class="mt-2.5 pt-2 border-t border-zinc-200 flex items-center justify-between text-[11px]">
+                          <span class="text-zinc-500 font-medium flex items-center gap-1">
+                            <i data-lucide="clock" class="w-3 h-3 text-zinc-400"></i>
+                            <span>소요 <strong class="text-black font-semibold">60분</strong></span>
+                          </span>
+                          <button data-service="앰플영양클리닉케어" class="btn-select-service inline-flex items-center gap-1 font-bold text-black hover:text-[#B29200] group-hover:translate-x-0.5 transition-all">
+                            <span>선택하기</span>
+                            <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 시술 8: 탈모 or 지루성 두피케어 -->
+                  <div class="service-item group p-3.5 sm:p-4 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-black hover:shadow-md transition-all duration-300">
+                    <div class="flex gap-3.5 items-center">
+                      <div class="relative w-20 h-20 sm:w-22 sm:h-22 rounded-xl overflow-hidden shrink-0 bg-zinc-200 border border-zinc-200">
+                        <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80" alt="탈모 or 지루성 두피케어 시술 사진" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" />
+                        <span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/85 text-[10px] text-[#FFE600] font-bold">60분</span>
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between gap-1 mb-1">
+                          <div class="flex items-center gap-1.5 flex-wrap">
+                            <h4 class="font-bold text-sm sm:text-base text-black group-hover:text-zinc-900">탈모 / 지루성 두피케어</h4>
+                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#FFE600] text-black">두피정화</span>
+                          </div>
+                          <span class="font-black text-sm sm:text-base text-black tracking-tight whitespace-nowrap">65,000원</span>
+                        </div>
+                        <p class="text-xs text-zinc-600 line-clamp-1 leading-snug">열감 완화 스칼프 스케일링 + 모근 강화 펩타이드 쿨링</p>
+                        <div class="mt-2.5 pt-2 border-t border-zinc-200 flex items-center justify-between text-[11px]">
+                          <span class="text-zinc-500 font-medium flex items-center gap-1">
+                            <i data-lucide="clock" class="w-3 h-3 text-zinc-400"></i>
+                            <span>소요 <strong class="text-black font-semibold">60분</strong></span>
+                          </span>
+                          <button data-service="탈모 or 지루성 두피케어" class="btn-select-service inline-flex items-center gap-1 font-bold text-black hover:text-[#B29200] group-hover:translate-x-0.5 transition-all">
+                            <span>선택하기</span>
+                            <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 하단 두피 특화 안내 박스 -->
+              <div class="mt-6 p-3.5 rounded-xl bg-zinc-100 text-[11px] text-zinc-700 border-l-4 border-[#FFE600] flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-4 h-4 text-black shrink-0"></i>
+                <span>1:1 두피 진단 후 개별 두피 타입에 맞는 전용 솔루션 적용</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- [6. LOOKBOOK SECTION] 시술 포트폴리오 & 룩북 (모노크롬 & 옐로우 태그) -->
+      <section id="lookbook" class="py-24 px-5 sm:px-8 bg-white border-t border-zinc-200">
+        <div class="max-w-7xl mx-auto">
+          
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+              <span class="inline-block px-3 py-1 rounded-full bg-black text-[#FFE600] text-[11px] font-bold tracking-widest uppercase mb-3">PORTFOLIO LOOKBOOK</span>
+              <h2 class="text-3xl sm:text-4xl font-bold text-black font-serif-kr mt-1">
+                라이뷰티 시술 룩북
+              </h2>
+              <p class="text-sm text-zinc-600 mt-2">
+                실제 고객님들의 비포&amp;애프터와 디자인 디테일을 확인해 보세요.
+              </p>
+            </div>
+
+            <!-- 최근 본 시술 카운터 안내 -->
+            <div class="flex items-center gap-3">
+              <span class="text-xs text-zinc-600">
+                최근 본 시술 <strong id="recent-view-count" class="text-black font-black">0</strong>개
+              </span>
+              <button id="btn-view-wishlist" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-black text-[#FFE600] text-xs font-bold hover:bg-zinc-800 transition-all">
+                <i data-lucide="heart" class="w-3.5 h-3.5 fill-current"></i>
+                <span>찜 목록 보기</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 룩북 카테고리 필터 버튼 그룹 -->
+          <div class="flex flex-wrap items-center gap-2 mb-10" id="lookbook-filters">
+            <button class="filter-btn active px-4 py-2 rounded-full text-xs font-bold border border-black transition-all" data-category="all">
+              전체보기
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold border border-zinc-300 transition-all bg-white hover:border-black" data-category="perm">
+              속눈썹 펌 (네츄럴/영양/블랙)
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold border border-zinc-300 transition-all bg-white hover:border-black" data-category="extension">
+              속눈썹 연장 (네츄럴/디자인)
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold border border-zinc-300 transition-all bg-white hover:border-black" data-category="scalp">
+              헤어 &amp; 두피 케어
+            </button>
+          </div>
+
+          <!-- 룩북 그리드 리스트 (동적 렌더링 영역) -->
+          <div id="lookbook-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- JavaScript가 카드들을 자동 렌더링합니다 -->
+          </div>
+
+        </div>
+      </section>
+
+      <!-- [7. REVIEW SECTION] 고객 리얼 후기 (옐로우 별점 포인트) -->
+      <section id="review" class="py-24 px-5 sm:px-8 bg-zinc-50 border-t border-zinc-200">
+        <div class="max-w-6xl mx-auto">
+          
+          <div class="text-center max-w-2xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-1 text-[#FFE600] mb-2">
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <span class="text-sm font-black text-black ml-2 bg-[#FFE600] px-2 py-0.5 rounded">4.98 / 5.0</span>
+            </div>
+            <h2 class="text-lg sm:text-xl lg:text-2xl font-bold text-black font-serif-kr tracking-tight mb-2.5">
+              라이뷰티를 다녀간 고객님들의 솔직한 이야기
+            </h2>
+            <p class="text-sm sm:text-base text-zinc-600">
+              첫 시술이 망설여졌던 학생부터 정착한 단골 고객님까지 믿고 찾아주십니다.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="p-6 rounded-3xl bg-white border border-zinc-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-1 text-[#FFE600] mb-3">
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                </div>
+                <p class="text-sm text-zinc-800 leading-relaxed mb-4">
+                  “첫 펌이라 눈시림 걱정을 진짜 많이 했는데 펌제 냄새도 안 나고 시술 내내 꿀잠 잤어요! 학교에서도 인위적이지 않고 내 원래 눈눈썹이 바짝 올라간 느낌이라 친구들이 어디서 했냐고 난리예요.”
+                </p>
+              </div>
+              <div class="pt-4 border-t border-zinc-100 flex items-center justify-between text-xs text-zinc-500">
+                <span class="font-bold text-black">김*민 고객님 (19세, 고3)</span>
+                <span class="text-black font-medium">네츄럴 영양클리닉펌</span>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-3xl bg-white border border-zinc-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-1 text-[#FFE600] mb-3">
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                </div>
+                <p class="text-sm text-zinc-800 leading-relaxed mb-4">
+                  “아침마다 뷰러 찝고 마스카라 번지는 게 일이었는데 블랙클리닉펌 하니까 쌩얼로 등교해도 눈매가 엄청 또렷해요! 1달 지났는데도 꺾임 없이 예쁘게 유지돼서 재방문 예약했습니다.”
+                </p>
+              </div>
+              <div class="pt-4 border-t border-zinc-100 flex items-center justify-between text-xs text-zinc-500">
+                <span class="font-bold text-black">이*서 고객님 (20세, 대학생)</span>
+                <span class="text-black font-medium">블랙클리닉펌 (틴팅)</span>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-3xl bg-white border border-zinc-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-1 text-[#FFE600] mb-3">
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                </div>
+                <p class="text-sm text-zinc-800 leading-relaxed mb-4">
+                  “시험 기간에 스트레스 받아서 두피가 간지럽고 붉어졌는데 탈모·지루성 두피케어 받고 머리 열감이 싹 가라앉았어요. 속눈썹이랑 두피 케어를 한 곳에서 프라이빗하게 받을 수 있어 최고예요.”
+                </p>
+              </div>
+              <div class="pt-4 border-t border-zinc-100 flex items-center justify-between text-xs text-zinc-500">
+                <span class="font-bold text-black">박*현 고객님 (18세, 고2)</span>
+                <span class="text-black font-medium">탈모/지루성 두피케어</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 인스타그램 피드 배너 (블랙&화이트 + 옐로우) -->
+          <div class="mt-14 p-6 sm:p-8 rounded-3xl bg-black text-white border border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-700 flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6 text-[#FFE600]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                </svg>
+              </div>
+              <div>
+                <p class="font-bold text-base text-white">공식 인스타그램에서 매일 시술 영상을 확인하세요</p>
+                <p class="text-xs text-zinc-400 mt-0.5">매일 업로드되는 실시간 시술 영상 및 이벤트 공지</p>
+              </div>
+            </div>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-full bg-[#FFE600] text-black text-xs font-black hover:bg-[#F5DC00] transition-all flex items-center gap-2">
+              <i data-lucide="camera" class="w-4 h-4"></i>
+              <span>인스타그램 바로가기</span>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- [8. RESERVATION SECTION] 간편 예약 신청 & 상담 연결 -->
+      <section id="reservation" class="py-24 px-5 sm:px-8 bg-white border-t border-zinc-200">
+        <div class="max-w-6xl mx-auto">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <!-- 좌측: 예약 폼 (7 cols) -->
+            <div class="lg:col-span-7 bg-zinc-50 p-6 sm:p-10 rounded-3xl border border-zinc-300 shadow-xl">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <span class="inline-block px-3 py-1 rounded-full bg-black text-[#FFE600] text-[11px] font-bold tracking-widest uppercase mb-1">ONLINE BOOKING</span>
+                  <h2 class="text-2xl sm:text-3xl font-bold text-black font-serif-kr mt-1">
+                    간편 예약 신청
+                  </h2>
+                </div>
+                <div class="w-10 h-10 rounded-full bg-black text-[#FFE600] flex items-center justify-center">
+                  <i data-lucide="calendar-days" class="w-5 h-5"></i>
+                </div>
+              </div>
+
+              <form id="reservation-form" class="space-y-5">
+                <!-- 1. 시술 선택 -->
+                <div>
+                  <label class="block text-xs font-bold text-black mb-1.5">1. 희망 시술 선택 *</label>
+                  <select id="res-service" required class="w-full px-4 py-3 rounded-xl border border-zinc-300 bg-white text-sm text-black focus:outline-none focus:ring-2 focus:ring-[#FFE600] focus:border-black">
+                    <option value="" disabled selected>시술 항목을 선택해 주세요</option>
+                    <optgroup label="속눈썹 펌">
+                      <option value="네츄럴펌">네츄럴펌 (35,000원 / 45분)</option>
+                      <option value="영양클리닉펌">영양클리닉펌 (45,000원 / 50분)</option>
+                      <option value="블랙클리닉펌">블랙클리닉펌 (50,000원 / 55분)</option>
+                    </optgroup>
+                    <optgroup label="속눈썹 연장">
+                      <option value="네츄럴 연장">네츄럴 연장 (55,000원 / 60분)</option>
+                      <option value="디자인 연장">디자인 연장 (70,000원 / 75분)</option>
+                    </optgroup>
+                    <optgroup label="헤어 & 두피 케어">
+                      <option value="새치염색">새치염색 (40,000원~ / 50분)</option>
+                      <option value="앰플영양클리닉케어">앰플영양클리닉케어 (60,000원 / 60분)</option>
+                      <option value="탈모 or 지루성 두피케어">탈모 or 지루성 두피케어 (65,000원 / 60분)</option>
+                    </optgroup>
+                  </select>
+                </div>
+
+                <!-- 2. 날짜 및 시간 선택 -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-bold text-black mb-1.5">2. 예약 희망 날짜 *</label>
+                    <input type="date" id="res-date" required class="w-full px-4 py-3 rounded-xl border border-zinc-300 bg-white text-sm text-black focus:outline-none focus:ring-2 focus:ring-[#FFE600] focus:border-black" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-black mb-1.5">3. 예약 희망 시간 *</label>
+                    <select id="res-time" required class="w-full px-4 py-3 rounded-xl border border-zinc-300 bg-white text-sm text-black focus:outline-none focus:ring-2 focus:ring-[#FFE600] focus:border-black">
+                      <option value="" disabled selected>시간을 선택해 주세요</option>
+                      <option value="11:00">오전 11:00</option>
+                      <option value="12:00">오후 12:00</option>
+                      <option value="13:30">오후 01:30</option>
+                      <option value="15:00">오후 03:00</option>
+                      <option value="16:30">오후 04:30</option>
+                      <option value="18:00">오후 06:00</option>
+                      <option value="19:00">오후 07:00 (마지막 슬롯)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- 3. 예약자 정보 -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-bold text-black mb-1.5">예약자 성함 *</label>
+                    <input type="text" id="res-name" placeholder="홍길동" required class="w-full px-4 py-3 rounded-xl border border-zinc-300 bg-white text-sm text-black focus:outline-none focus:ring-2 focus:ring-[#FFE600] focus:border-black" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-black mb-1.5">연락처 *</label>
+                    <input type="tel" id="res-phone" placeholder="010-1234-5678" required class="w-full px-4 py-3 rounded-xl border border-zinc-300 bg-white text-sm text-black focus:outline-none focus:ring-2 focus:ring-[#FFE600] focus:border-black" />
+                  </div>
+                </div>
+
+                <!-- 4. 요청 사항 -->
+                <div>
+                  <label class="block text-xs font-bold text-black mb-1.5">요청 사항 (선택)</label>
+                  <textarea id="res-note" rows="2" placeholder="첫 시술 여부, 렌즈 착용, 알레르기 유무, 10대 학생 할인 문의 등" class="w-full px-4 py-3 rounded-xl border border-zinc-300 bg-white text-sm text-black focus:outline-none focus:ring-2 focus:ring-[#FFE600] focus:border-black"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-4 rounded-xl bg-black text-[#FFE600] font-black text-sm hover:bg-zinc-800 transition-all shadow-md active:scale-95 flex items-center justify-center gap-2 border border-black">
+                  <i data-lucide="check" class="w-4 h-4"></i>
+                  <span>예약 신청 완료하기</span>
+                </button>
+              </form>
+            </div>
+
+            <!-- 우측: 살롱 정보 & 1:1 상담 채널 (5 cols) -->
+            <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+              
+              <!-- 살롱 위치 & 이용 안내 -->
+              <div class="bg-zinc-50 p-6 sm:p-8 rounded-3xl border border-zinc-300 shadow-sm">
+                <h3 class="text-xl font-bold text-black font-serif-kr mb-4">
+                  살롱 안내 및 위치
+                </h3>
+
+                <ul class="space-y-4 text-xs sm:text-sm text-zinc-700">
+                  <li class="flex items-start gap-3">
+                    <span class="w-6 h-6 rounded-full bg-black text-[#FFE600] flex items-center justify-center shrink-0 mt-0.5">
+                      <i data-lucide="house" class="w-3.5 h-3.5"></i>
+                    </span>
+                    <div class="flex-1">
+                      <p class="font-bold text-black text-sm">매장 주소</p>
+                      <p class="font-semibold text-zinc-900 mt-0.5">경기 김포시 김포대로926번길 54 풍년마을삼성아파트 상가동 115호 (주차장앞 1층)</p>
+                      <p class="text-[12px] text-zinc-500 mt-1">김포골드라인 사우역 3번 출구 도보 5분</p>
+                      
+                      <!-- 네이버 지도 & 카카오맵 길찾기 버튼 -->
+                      <div class="mt-2.5 flex items-center gap-2">
+                        <a href="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%20%EA%B9%80%ED%8F%AC%EC%8B%9C%20%EA%B9%80%ED%8F%AC%EB%8C%80%EB%A1%9C926%EB%B2%88%EA%B8%B8%2054" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black text-[#FFE600] text-[11px] font-bold hover:bg-zinc-800 transition-colors">
+                          <span>네이버 지도 길찾기 →</span>
+                        </a>
+                        <a href="https://map.kakao.com/link/search/%EA%B2%BD%EA%B8%B0%20%EA%B9%80%ED%8F%AC%EC%8B%9C%20%EA%B9%80%ED%8F%AC%EB%8C%80%EB%A1%9C926%EB%B2%88%EA%B8%B8%2054" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FEE500] text-black text-[11px] font-bold hover:brightness-95 transition-all">
+                          <span>카카오맵 길찾기 →</span>
+                        </a>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="flex items-start gap-3">
+                    <span class="w-6 h-6 rounded-full bg-black text-[#FFE600] flex items-center justify-center shrink-0 mt-0.5">
+                      <i data-lucide="sparkles" class="w-3.5 h-3.5 fill-current"></i>
+                    </span>
+                    <div>
+                      <p class="font-bold text-black">주차 안내</p>
+                      <p class="text-zinc-800 font-medium">상가 전용 지상 주차장 바로 앞 1층 위치 (무료 주차 가능)</p>
+                    </div>
+                  </li>
+
+                  <li class="flex items-start gap-3">
+                    <span class="w-6 h-6 rounded-full bg-black text-[#FFE600] flex items-center justify-center shrink-0 mt-0.5">
+                      <i data-lucide="calendar-days" class="w-3.5 h-3.5"></i>
+                    </span>
+                    <div>
+                      <p class="font-bold text-black">영업 시간</p>
+                      <p>화요일 - 일요일 : 11:00 ~ 20:00 (매주 월요일 정기 휴무)</p>
+                    </div>
+                  </li>
+
+                  <li class="flex items-start gap-3">
+                    <span class="w-6 h-6 rounded-full bg-black text-[#FFE600] flex items-center justify-center shrink-0 mt-0.5">
+                      <i data-lucide="heart" class="w-3.5 h-3.5 fill-current"></i>
+                    </span>
+                    <div>
+                      <p class="font-bold text-black">100% 프라이빗 1:1 예약제</p>
+                      <p>한 타임 한 분만을 위한 프라이빗 1:1 집중 시술로 운영됩니다.</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- 실시간 채널 상담 버튼 3개 -->
+              <div class="bg-zinc-50 p-6 sm:p-8 rounded-3xl border border-zinc-300 shadow-sm space-y-3">
+                <h3 class="text-sm font-bold text-black mb-3">빠른 1:1 상담 및 연동</h3>
+                
+                <!-- 카카오톡 채널 (노랑 시그니처) -->
+                <a href="https://pf.kakao.com" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-5 rounded-2xl bg-[#FEE500] text-black font-extrabold text-sm flex items-center justify-between hover:brightness-95 transition-all shadow-sm border border-yellow-400">
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    <span>카카오톡 채널 1:1 실시간 상담</span>
+                  </div>
+                  <span class="text-xs">상담하기 →</span>
+                </a>
+
+                <!-- 네이버 플레이스 예약 -->
+                <a href="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%20%EA%B9%80%ED%8F%AC%EC%8B%9C%20%EA%B9%80%ED%8F%AC%EB%8C%80%EB%A1%9C926%EB%B2%88%EA%B8%B8%2054" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-5 rounded-2xl bg-black text-[#FFE600] font-bold text-sm flex items-center justify-between hover:bg-zinc-800 transition-all shadow-sm">
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="calendar-days" class="w-5 h-5"></i>
+                    <span>네이버 지도 &amp; 플레이스 바로가기</span>
+                  </div>
+                  <span class="text-xs text-white">지도 이동 →</span>
+                </a>
+
+                <!-- 전화 상담 연결 -->
+                <a href="tel:0507-1361-4297" class="w-full py-3.5 px-5 rounded-2xl bg-white border border-zinc-300 text-black font-bold text-sm flex items-center justify-between hover:bg-zinc-100 transition-all">
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="phone" class="w-5 h-5 text-black"></i>
+                    <span>전화 문의 (0507-1361-4297)</span>
+                  </div>
+                  <span class="text-xs text-zinc-500">통화 연결 →</span>
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- [9. FOOTER SECTION] 브랜드 정보 & 라이선스 (풀 블랙 & 옐로우 악센트) -->
+    <footer class="bg-black text-white pt-16 pb-12 px-5 sm:px-8 border-t border-zinc-800">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-zinc-800">
+          
+          <!-- 브랜드 로고 및 소개 (순수 한국어 '라이뷰티'만 표기) -->
+          <div class="md:col-span-5">
+            <div class="flex items-center gap-2.5 mb-4">
+              <div class="w-9 h-9 rounded-full bg-[#FFE600] text-black flex items-center justify-center font-bold">
+                <i data-lucide="sparkles" class="w-4 h-4 fill-current"></i>
+              </div>
+              <span class="text-2xl font-black font-serif-kr text-white">라이뷰티</span>
+            </div>
+            <p class="text-xs text-zinc-400 leading-relaxed max-w-sm mb-6">
+              자연스러움 속에서 피어나는 본연의 또렷함.<br />
+              10대 후반 고객님들의 맑고 건강한 눈매와 두피를 위한 1:1 맞춤형 프리미엄 뷰티 살롱입니다.
+            </p>
+            <div class="flex items-center gap-3">
+              <a href="https://instagram.com" target="_blank" aria-label="인스타그램" class="w-9 h-9 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-[#FFE600] hover:border-[#FFE600] transition-all">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                </svg>
+              </a>
+              <a href="https://pf.kakao.com" target="_blank" aria-label="카카오톡" class="w-9 h-9 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-[#FFE600] hover:border-[#FFE600] transition-all">
+                <i data-lucide="message-circle-more" class="w-4 h-4"></i>
+              </a>
+              <a href="#hero" aria-label="맨 위로" class="w-9 h-9 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-[#FFE600] hover:border-[#FFE600] transition-all">
+                <i data-lucide="chevron-left" class="w-4 h-4 -rotate-90"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 운영 정보 -->
+          <div class="md:col-span-4 text-xs text-zinc-400 space-y-2">
+            <p class="font-bold text-white text-sm mb-3">운영 정보</p>
+            <p>상호명 : 라이뷰티 (Rai Beauty Salon)</p>
+            <p>대표원장 : 유시연 | 사업자등록번호 : 205-35-71932</p>
+            <p>소재지 : 경기 김포시 김포대로926번길 54 풍년마을삼성아파트 상가동 115호 (주차장앞 1층)</p>
+            <p>통신판매업신고 : 제 2026-경기김포-0142호</p>
+            <p>고객센터 / 예약문의 : 0507-1361-4297 (화~일 11:00~20:00)</p>
+          </div>
+
+          <!-- 안전 및 위생 정책 -->
+          <div class="md:col-span-3 text-xs text-zinc-400 space-y-2">
+            <p class="font-bold text-white text-sm mb-3">안심 케어 프로토콜</p>
+            <p class="flex items-center gap-1.5"><span class="text-[#FFE600]">✓</span> 1회용 아이패치 &amp; 베개 커버 사용</p>
+            <p class="flex items-center gap-1.5"><span class="text-[#FFE600]">✓</span> 시술 도구 자외선 멸균 소독 100%</p>
+            <p class="flex items-center gap-1.5"><span class="text-[#FFE600]">✓</span> 식품의약품안전처/KC 인증 정품 보장</p>
+            <p class="flex items-center gap-1.5"><span class="text-[#FFE600]">✓</span> 100% 사전 예약제 프라이빗 룸</p>
+          </div>
+
+        </div>
+
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-zinc-500 gap-4">
+          <p>© 2026 라이뷰티. ALL RIGHTS RESERVED.</p>
+          <div class="flex items-center gap-4">
+            <a href="#about" class="hover:text-[#FFE600]">이용약관</a>
+            <span>•</span>
+            <a href="#about" class="hover:text-[#FFE600]">개인정보처리방침</a>
+            <span>•</span>
+            <a href="#service" class="hover:text-[#FFE600]">환불/예약취소 규정</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ========================================================================= -->
+    <!-- [MODALS & DIALOGS] 팝업 인터랙션 시스템 (블랙 & 화이트 & 옐로우) -->
+    <!-- ========================================================================= -->
+
+    <!-- 1. 룩북 이미지 확대 줌 모달 (Zoom Modal) -->
+    <div id="modal-zoom" class="modal-backdrop hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+      <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border-2 border-black relative max-h-[90vh] flex flex-col">
+        <!-- 닫기 버튼 -->
+        <button id="btn-close-zoom" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black text-white hover:bg-zinc-800 flex items-center justify-center shadow transition-all">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <div class="p-6 pb-0 flex-1 overflow-y-auto">
+          <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-black mb-4 relative border border-zinc-200">
+            <img id="zoom-img" alt="시술 상세 뷰" class="w-full h-full object-cover">
+            <span id="zoom-tag" class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black text-[#FFE600] text-xs font-bold border border-yellow-400">
+              시술 라벨
+            </span>
+          </div>
+
+          <div class="flex items-start justify-between gap-4 mb-2">
+            <div>
+              <h3 id="zoom-title" class="text-2xl font-bold text-black font-serif-kr">시술명</h3>
+              <p id="zoom-price" class="text-base font-bold text-black mt-0.5">시술 가격</p>
+            </div>
+            <button id="zoom-btn-wish" class="p-2.5 rounded-full border border-zinc-300 text-zinc-500 hover:text-black transition-all">
+              <i data-lucide="heart" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <p id="zoom-desc" class="text-sm text-zinc-600 leading-relaxed mb-4">
+            상세 설명이 들어갑니다.
+          </p>
+
+          <div class="p-4 rounded-xl bg-zinc-100 border border-zinc-200 text-xs text-zinc-700 space-y-1 mb-6">
+            <p>• <strong>권장 눈매:</strong> <span id="zoom-fit">모든 눈매</span></p>
+            <p>• <strong>유지 기간:</strong> <span id="zoom-duration">약 4~6주</span></p>
+            <p>• <strong>시술 시간:</strong> <span id="zoom-time">약 50분 소요</span></p>
+          </div>
+        </div>
+
+        <div class="p-4 sm:p-6 bg-zinc-50 border-t border-zinc-200 flex gap-3">
+          <button id="btn-zoom-reserve" class="flex-1 py-4 rounded-xl bg-black text-[#FFE600] font-bold text-sm hover:bg-zinc-800 transition-all flex items-center justify-center gap-2 border border-black">
+            <i data-lucide="calendar-days" class="w-4 h-4 text-[#FFE600]"></i>
+            <span>이 스타일로 예약하기</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 예약 완료 안내 모달 (Confirmation Modal) -->
+    <div id="modal-confirm" class="modal-backdrop hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+      <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border-2 border-black text-center relative">
+        <button id="btn-close-confirm" class="absolute top-4 right-4 w-8 h-8 rounded-full hover:bg-zinc-100 text-zinc-500 flex items-center justify-center">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <div class="w-16 h-16 rounded-full bg-black text-[#FFE600] flex items-center justify-center mx-auto mb-4 border-2 border-yellow-400">
+          <i data-lucide="check" class="w-8 h-8"></i>
+        </div>
+
+        <h3 class="text-2xl font-bold text-black font-serif-kr mb-2">예약 신청이 접수되었습니다!</h3>
+        <p class="text-xs text-zinc-600 mb-6">라이뷰티 담당 디자이너가 예약 확인 후 안내 문자를 발송해 드립니다.</p>
+
+        <!-- 예약 확인 카드 -->
+        <div class="p-4 rounded-2xl bg-zinc-50 border border-zinc-300 text-left text-xs text-zinc-700 space-y-2 mb-6">
+          <div class="flex justify-between">
+            <span class="text-zinc-500">예약자명</span>
+            <strong id="confirm-name" class="text-black">-</strong>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-zinc-500">연락처</span>
+            <span id="confirm-phone">-</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-zinc-500">신청 시술</span>
+            <strong id="confirm-service" class="text-black bg-[#FFE600] px-1 rounded">-</strong>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-zinc-500">예약 일시</span>
+            <span id="confirm-datetime" class="font-bold text-black">-</span>
+          </div>
+          <div class="pt-2 border-t border-zinc-200 flex justify-between text-[11px]">
+            <span class="text-zinc-500">예약 번호</span>
+            <span id="confirm-booking-id" class="font-mono text-black font-bold">RAI-2026-0000</span>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <a href="https://pf.kakao.com" target="_blank" class="w-full py-3.5 rounded-xl bg-[#FEE500] text-black font-black text-xs flex items-center justify-center gap-2 border border-yellow-400">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>카카오톡으로 예약 확정 알림 받기</span>
+          </a>
+          <button id="btn-confirm-ok" class="w-full py-3.5 rounded-xl bg-black text-white font-bold text-xs hover:bg-zinc-800">
+            확인 및 닫기
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 최근 본 시술 및 찜 목록 모달 (Recent / Wishlist) -->
+    <div id="modal-recent" class="modal-backdrop hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+      <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border-2 border-black max-h-[85vh] flex flex-col relative">
+        <button id="btn-close-recent" class="absolute top-4 right-4 w-8 h-8 rounded-full hover:bg-zinc-100 text-zinc-500 flex items-center justify-center">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <div class="flex items-center gap-2 mb-4">
+          <i data-lucide="shopping-bag" class="w-5 h-5 text-black"></i>
+          <h3 class="text-xl font-bold text-black font-serif-kr">최근 본 시술 &amp; 찜 목록</h3>
+        </div>
+
+        <div id="recent-list-container" class="flex-1 overflow-y-auto space-y-3 pr-1 py-2">
+          <!-- 동적 주입 -->
+        </div>
+
+        <div class="pt-4 border-t border-zinc-200 flex justify-between items-center text-xs">
+          <button id="btn-clear-recent" class="text-zinc-500 hover:text-black underline">기록 비우기</button>
+          <a href="#reservation" id="btn-recent-reserve" class="px-5 py-2.5 rounded-full bg-black text-[#FFE600] font-bold text-xs">
+            바로 예약하기
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 플로팅 퀵 액션 바 (화면 우측 하단 고정 카카오톡 노랑 & 블랙 맨위로) -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-2.5">
+      <a href="https://pf.kakao.com" target="_blank" title="카카오톡 1:1 문의" class="w-12 h-12 rounded-full bg-[#FFE600] text-black flex items-center justify-center shadow-lg hover:scale-110 transition-transform border border-black font-black">
+        <i data-lucide="message-circle" class="w-6 h-6"></i>
+      </a>
+      <a href="#hero" title="상단으로 이동" class="w-12 h-12 rounded-full bg-black text-[#FFE600] flex items-center justify-center shadow-lg hover:bg-zinc-800 transition-colors border border-zinc-700">
+        <i data-lucide="chevron-left" class="w-5 h-5 rotate-90"></i>
+      </a>
+    </div>
+
+    <!-- 순수 바닐라 자바스크립트 통합 모듈 -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

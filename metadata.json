@@ -1,0 +1,6 @@
+{
+  "name": "라이뷰티 (Rai Beauty) - 속눈썹 전문 살롱",
+  "description": "프리미엄 속눈썹 연장·펌 & 아이래쉬 케어 전문 샵 라이뷰티",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
